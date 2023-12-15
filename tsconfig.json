@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
-     "lib": [
-        "es6"
-     ],
-     "target": "es6",
-     "module": "commonjs",
-     "moduleResolution": "node",
-     "outDir": "dist",
-     "resolveJsonModule": true,
-     "emitDecoratorMetadata": true,
-     "esModuleInterop": true,
-     "experimentalDecorators": true,
-     "sourceMap": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "rootDir": "./src",
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*"],
+      "entity/*": ["src/entity/*"],
+      "Controllers/*": ["src/Controllers/*"],
+      "routes/*": ["src/routes/*"],
+      "Services/*": ["src/Services/*"],
+      "Schemas/*": ["src/Schemas/*"]
+    }
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["src/**/*.ts", "src/server.ts", "src/*"],
+  "exclude": ["node_modules"]
 }
