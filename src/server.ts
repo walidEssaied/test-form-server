@@ -1,11 +1,10 @@
-import * as dotenv from "dotenv";
 import "reflect-metadata";
 import { ConnectionOptions, createConnection } from "typeorm";
 import { Sector } from "./entity/Sector";
 import { User } from "./entity/User";
 import router from "./routes/index";
 
-dotenv.config();
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = process.env.APP_PORT ? parseInt(process.env.APP_PORT) : 3002;
@@ -16,12 +15,12 @@ app.use(cors());
 app.use("/", router);
 
 const connectionOptions: ConnectionOptions = {
-  type: process.env.DB_TYPE as any,
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+  type: 'mysql', // or any other type supported by TypeORM
+  host: 'mysql-71l0', // This should match the service name from Render
+  port: 3306, // This should match the port of your MySQL service
+  username: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
   entities: [User, Sector],
   synchronize: true,
 };
